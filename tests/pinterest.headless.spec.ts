@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('should be logged in to Pinterest', async ({ page }) => {
+test('should search pin', async ({ page }) => {
     await page.goto('https://ru.pinterest.com/ideas');
 
     const searchInput = page.locator('input[name="searchBoxInput"]');
