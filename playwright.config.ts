@@ -38,8 +38,7 @@ export default defineConfig({
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
-        // Указываем путь к файлу авторизации
-        storageState: 'auth.json',
+        storageState: process.env.CI ? undefined : 'auth.json',
         launchOptions: {
           args: [
             '--disable-blink-features=AutomationControlled', // Скрывает признак автоматизации
