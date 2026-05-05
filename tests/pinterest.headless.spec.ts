@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('should search pin', async ({ page }) => {
+test('should search pin', async ({ page }, testInfo) => {
     await page.goto('https://ru.pinterest.com/ideas');
 
     const searchInput = page.locator('input[name="searchBoxInput"]');
@@ -13,4 +13,11 @@ test('should search pin', async ({ page }) => {
     await firstPin.click();
 
     await expect(page).toHaveURL(/pin/);
+
+    const screenshot = await page.screenshot();
+  
+    await testInfo.attach('screenshot-name', {
+        body: screenshot,
+        contentType: 'image/png',
+    });
 });
